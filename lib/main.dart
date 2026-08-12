@@ -3,9 +3,18 @@ import 'package:chatapp/Screens/CameraScreen.dart';
 import 'package:chatapp/Screens/Homescreen.dart';
 import 'package:chatapp/Screens/LoginScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+List<CameraDescription>? cameras;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // تهيئة Firebase
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   cameras = await availableCameras();
 
@@ -13,14 +22,17 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'WhatsApp Clone',
       theme: ThemeData(
-          fontFamily: "OpenSans",
-          primaryColor: Color(0xFF075E54),
-          accentColor: Color(0xFF128C7E)),
+        fontFamily: "OpenSans",
+        primaryColor: const Color(0xFF075E54),
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          secondary: const Color(0xFF128C7E),
+        ),
+      ),
       home: LoginScreen(),
     );
   }
