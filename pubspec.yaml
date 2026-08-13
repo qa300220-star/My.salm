@@ -35,6 +35,12 @@ dependencies:
   path:
   video_player: ^1.0.1
   socket_io_client: ^0.9.12
+
+  # Firebase
+  firebase_core: ^2.24.2
+  cloud_firestore: ^4.14.0
+  firebase_auth: ^4.16.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
